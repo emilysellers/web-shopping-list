@@ -1,7 +1,7 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
-import { createItem } from './fetch-utils.js';
+import { createItem, getItems } from './fetch-utils.js';
 import { renderItem } from './render-utils.js';
 
 /* Get DOM Elements */
@@ -16,6 +16,10 @@ let error = null;
 /* Events */
 // add window event listener
 window.addEventListener('load', async () => {
+    const response = await getItems();
+    error = response.error;
+    items = response.data;
+
     if (error) {
         displayError();
     } else {
