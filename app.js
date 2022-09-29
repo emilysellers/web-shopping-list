@@ -2,7 +2,7 @@
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
 import { createItem } from './fetch-utils.js';
-// import { renderItem } from './render-utils.js';
+import { renderItem } from './render-utils.js';
 
 /* Get DOM Elements */
 const addItemForm = document.getElementById('add-item-form');
@@ -18,8 +18,8 @@ let error = null;
 window.addEventListener('load', async () => {
     if (error) {
         displayError();
-        // } else {
-        // displayItems();
+    } else {
+        displayItems();
     }
 });
 
@@ -40,7 +40,7 @@ addItemForm.addEventListener('submit', async (e) => {
         displayError();
     } else {
         items.push(item);
-        // displayItems();
+        displayItems();
     }
     addItemForm.reset();
 });
@@ -57,11 +57,11 @@ function displayError() {
 }
 
 // display items
-// function displayItems() {
-//     itemList.innerHTML = '';
+function displayItems() {
+    itemList.innerHTML = '';
 
-//     for (const item of items) {
-//         const itemEl = renderItem(item);
-//         itemList.append(itemEl);
-//     }
-// }
+    for (const item of items) {
+        const itemEl = renderItem(item);
+        itemList.append(itemEl);
+    }
+}
