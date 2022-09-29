@@ -1,7 +1,13 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
-import { createItem, getItems, itemBought, deleteAllItems } from './fetch-utils.js';
+import {
+    createItem,
+    getItems,
+    itemBought,
+    deleteAllItems,
+    deleteBoughtItems,
+} from './fetch-utils.js';
 import { renderItem } from './render-utils.js';
 
 /* Get DOM Elements */
@@ -9,11 +15,11 @@ const addItemForm = document.getElementById('add-item-form');
 const errorDisplay = document.getElementById('error-display');
 const itemList = document.getElementById('item-list');
 const deleteAllButton = document.getElementById('delete-all-button');
+const deleteBoughtButton = document.getElementById('delete-bought-button');
 
 /* State */
 let items = [];
 let error = null;
-// let user = getUser();
 
 /* Events */
 // add window event listener
@@ -56,11 +62,27 @@ addItemForm.addEventListener('submit', async (e) => {
 deleteAllButton.addEventListener('click', async () => {
     const response = await deleteAllItems();
     error = response.error;
-    //items = response.data;
     if (error) {
         displayError();
     } else {
         items = [];
+        displayItems();
+    }
+});
+
+deleteBoughtButton.addEventListener('click', async () => {
+    const response = await deleteBoughtItems();
+    error = response.error;
+    if (error) {
+        displayError();
+    } else {
+        const unboughtItems = [];
+        for (const item of items) {
+            if (item.bought === false) {
+                unboughtItems.push(item);
+            }
+            items = unboughtItems;
+        }
         displayItems();
     }
 });

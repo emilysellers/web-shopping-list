@@ -5,6 +5,8 @@ const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 /* Auth related functions */
 
+let user = getUser();
+
 export function getUser() {
     return client.auth.user();
 }
@@ -42,6 +44,11 @@ export async function itemBought(id) {
 }
 
 export async function deleteAllItems() {
-    const user = getUser();
+    // const user = getUser();
     return await client.from('lists').delete().eq('user_id', user.id);
+}
+
+export async function deleteBoughtItems() {
+    // const user = getUser();
+    return await client.from('lists').delete().match({ bought: true }).eq('user_id', user.id);
 }
