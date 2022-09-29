@@ -42,21 +42,27 @@
 
         <main>
             <section>
-                <form id="add-item-form">
+                <form id="add-item-form" class="form">
                     <label>
-                        Quantity
-                        <input type="number" name="quantity" />
+                        <input
+                            type="number"
+                            name="quantity"
+                            min="0"
+                            placeholder="Quantity"
+                            required
+                        />
                     </label>
                     <label>
-                        Item
-                        <input type="text" name="item" />
+                        <input type="text" name="item" placeholder="Item" required />
                     </label>
                     <button name="add-item">Add item</button>
                 </form>
-                <button id="delete-all-button">Delete all items</button>
-                <button id="delete-bought-button">Delete bought items</button>
+                <div class="delete-buttons">
+                    <button id="delete-all-button">Delete all items</button>
+                    <button id="delete-bought-button">Delete bought items</button>
+                </div>
                 <div class="list-container">
-                    <p>Items to buy:</p>
+                    <h3>Items to buy:</h3>
                     <ul class="list" id="item-list"></ul>
                 </div>
             </section>

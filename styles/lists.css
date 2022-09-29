@@ -1,3 +1,48 @@
 li.bought {
     text-decoration: line-through;
 }
+
+li {
+    background-color: rgb(204, 219, 194);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+}
+
+main {
+    background-color: rgb(210, 162, 89);
+    display: grid;
+    justify-items: center;
+}
+
+.list-container {
+    background-color: rgb(235, 235, 235);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.form {
+    background-color: rgb(235, 235, 235);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.delete-buttons {
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 10px;
+}
+
+button {
+    font-size: 1.1em;
+    border-radius: 8px;
+}
+
+input {
+    font-size: 1.1em;
+}
+
+.title {
+    font-size: 25px;
+}
