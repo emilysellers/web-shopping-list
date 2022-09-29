@@ -40,7 +40,7 @@
 
         <main>
             <section>
-                <form>
+                <form id="add-item-form">
                     <label>
                         Quantity
                         <input type="number" name="quantity" />
@@ -51,12 +51,16 @@
                     </label>
                     <button name="add-item">Add item</button>
                 </form>
-                <ul class="list">
-                    <li>3 bananas</li>
-                    <li>1 pineapple</li>
-                    <li>42 cherries</li>
-                </ul>
+                <div class="list-container">
+                    <p>Add item to start your list</p>
+                    <ul class="list" id="item-list">
+                        <li>3 bananas</li>
+                        <li>1 pineapple</li>
+                        <li>42 cherries</li>
+                    </ul>
+                </div>
             </section>
+            <p id="error-display"></p>
         </main>
     </body>
 </html>
