@@ -1,7 +1,7 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
-import { createItem, getItems } from './fetch-utils.js';
+import { createItem, getItems, itemBought } from './fetch-utils.js';
 import { renderItem } from './render-utils.js';
 
 /* Get DOM Elements */
@@ -12,6 +12,7 @@ const itemList = document.getElementById('item-list');
 /* State */
 let items = [];
 let error = null;
+// let user = getUser();
 
 /* Events */
 // add window event listener
@@ -67,5 +68,18 @@ function displayItems() {
     for (const item of items) {
         const itemEl = renderItem(item);
         itemList.append(itemEl);
+
+        itemEl.addEventListener('click', async () => {
+            const response = await itemBought(item.id);
+            error = response.error;
+            const updatedItem = response.data;
+            if (error) {
+                displayError();
+            } else {
+                const index = items.indexOf(item);
+                items[index] = updatedItem;
+                displayItems();
+            }
+        });
     }
 }
