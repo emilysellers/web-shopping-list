@@ -1,48 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <!-- metadata -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<head>
-    <!-- metadata -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- title and favicon -->
+        <title>Shop</title>
+        <link rel="icon" type="image/x-icon" href="/assets/pineapple.png" />
 
-    <!-- title and favicon -->
-    <title>Supabase Web App</title>
-    <link rel="icon" type="image/x-icon" href="/assets/alchemy-favicon.png" />
+        <!-- js -->
+        <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+        <script type="module" src="app.js"></script>
 
-    <!-- js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-    <script type="module" src="app.js"></script>
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap"
+        />
 
-    <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap">
+        <!-- css -->
+        <link rel="stylesheet" href="/styles/reset.css" />
+        <link rel="stylesheet" href="/styles/global.css" />
+        <link rel="stylesheet" href="/styles/lists.css" />
 
+        <!-- add link for page specific css -->
+    </head>
 
-    <!-- css -->
-    <link rel="stylesheet" href="/styles/reset.css" />
-    <link rel="stylesheet" href="/styles/global.css" />
-    <!-- add link for page specific css -->
+    <body>
+        <header class="page-header">
+            <img class="logo" src="/assets/pineapple.png" alt="logo" />
+            <p class="title">Let's Shop</p>
+            <nav>
+                <!-- <a href="/">Home</a> -->
+                <a id="sign-out-link" href="auth">Sign Out</a></button>
+            </nav>
+        </header>
 
-</head>
-
-<body>
-    <header class="page-header">
-        <img class="logo" src="/assets/html_css_js.png" alt="logo">
-        <p class="title">Supabase Web App</p>
-        <nav>
-            <a href="/">Home</a>
-            <a id="sign-out-link" href="auth">Sign Out</a>
-        </nav>
-    </header>
-
-    <main>
-
-    </main>
-
-</body>
-
+        <main>
+            <section>
+                <form id="add-item-form" class="form">
+                    <label>
+                        <input
+                            type="number"
+                            name="quantity"
+                            min="0"
+                            placeholder="Quantity"
+                            required
+                        />
+                    </label>
+                    <label>
+                        <input type="text" name="item" placeholder="Item" required />
+                    </label>
+                    <button name="add-item">Add item</button>
+                </form>
+                <div class="delete-buttons">
+                    <button id="delete-all-button">Delete all items</button>
+                    <button id="delete-bought-button">Delete bought items</button>
+                </div>
+                <div class="list-container">
+                    <h3>Items to buy:</h3>
+                    <ul class="list" id="item-list"></ul>
+                </div>
+            </section>
+            <p id="error-display"></p>
+        </main>
+    </body>
 </html>
