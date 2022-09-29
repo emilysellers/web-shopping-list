@@ -6,6 +6,9 @@ export function renderItem(item) {
     }
     const p = document.createElement('p');
     p.textContent = [item.quantity + ' ' + item.item];
-    li.append(p);
+    const button = document.createElement('button');
+    button.textContent = 'mark bought';
+
+    li.append(p, button);
     return li;
 }

@@ -1,5 +1,6 @@
 li.bought {
     text-decoration: line-through;
+    background-color: rgb(172, 172, 172);
 }
 
 li {
@@ -7,6 +8,8 @@ li {
     padding: 10px;
     margin: 10px;
     border-radius: 8px;
+    display: grid;
+    grid-template-columns: 75% 25%;
 }
 
 main {
